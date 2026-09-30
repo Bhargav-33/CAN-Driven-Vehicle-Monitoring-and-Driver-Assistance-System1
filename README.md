@@ -167,3 +167,250 @@ Fuel Percentage
 CAN Transmission
      ↓
 Main Node
+
+The Fuel Percentage is periodically transmitted to the Main Node.
+
+When there is a significant change in fuel percentage, the updated value is transmitted immediately.
+
+📡 CAN Communication
+🖥️ Main Node → 🚦 Indicator & Reverse Alert Node
+
+The Main Node sends:
+
+🔄 Vehicle Mode
+⬅️ Left Indicator command
+➡️ Right Indicator command
+⏹️ Indicator OFF command
+🚦 Indicator & Reverse Alert Node → 🖥️ Main Node
+
+The node sends:
+
+🟢 SAFE
+🟡 WARNING
+🔴 STOP
+⛽ Fuel Node → 🖥️ Main Node
+
+The Fuel Node sends:
+
+⛽ Fuel Percentage
+
+🔄 CAN Communication Flow
+                    📡 CAN BUS
+                        │
+                        │
+              ┌─────────▼─────────┐
+              │   🖥️ MAIN NODE     │
+              │      LPC2129      │
+              │                   │
+              │  LCD + DS18B20    │
+              │  Switches         │
+              └─────────┬─────────┘
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+              ▼                   ▼
+ ┌──────────────────────┐   ┌──────────────────┐
+ │ 🚦 INDICATOR &       │   │ ⛽ FUEL NODE      │
+ │ REVERSE ALERT NODE   │   │                  │
+ │                      │   │ LPC2129 + ADC    │
+ │ LPC2129 + MCP2551    │   │ Fuel Gauge       │
+ │ LEDs + HC-SR05       │   │                  │
+ │ Buzzer               │   │                  │
+ └──────────────────────┘   └──────────────────┘
+
+🧩 Hardware Requirements
+| 🔧 Hardware     | Purpose                  |
+| --------------- | ------------------------ |
+| 🧠 LPC2129 ARM7 | Microcontroller          |
+| 📡 MCP2551      | CAN Transceiver          |
+| 💡 LEDs         | Indicator / alert        |
+| 🖥️ LCD         | Dashboard display        |
+| 📏 HC-SR05      | Obstacle detection       |
+| ⛽ Fuel Gauge    | Fuel measurement         |
+| 🔘 Switches     | Mode / indicator control |
+| 🔌 USB-to-UART  | Serial communication     |
+| 🌡️ DS18B20     | Temperature sensing      |
+| 🔊 Buzzer       | Reverse alert            |
+
+💻 Software Requirements
+💻 Embedded C Programming
+🛠️ Keil-C Compiler
+⚡ Flash Magic
+
+🔧 Technologies Used
+Embedded C
+LPC2129 ARM7
+CAN Protocol
+MCP2551
+GPIO
+ADC
+External Interrupts
+LCD Interfacing
+DS18B20
+HC-SR05
+Fuel Gauge
+UART
+ECU Communication
+
+🔄 Implementation Sequence
+1️⃣ Project Setup
+
+Create separate folders for:
+
+🖥️ Main Node
+🚦 Indicator & Reverse Alert Node
+⛽ Fuel Node
+2️⃣ LCD Testing
+
+Verify:
+
+Character display
+String display
+Integer display
+3️⃣ ADC Testing
+Connect variable voltage using potentiometer
+Read ADC value
+Display ADC value on LCD
+4️⃣ Fuel Percentage
+Develop fuel percentage calculation
+Display fuel percentage on LCD
+5️⃣ External Interrupt Testing
+Test external interrupts
+Count interrupt occurrences
+Display interrupt count
+6️⃣ HC-SR05 Testing
+Generate trigger pulse
+Measure echo duration
+Calculate obstacle distance
+Display distance on LCD
+7️⃣ Temperature Sensor Testing
+Interface DS18B20
+Read engine temperature
+Display temperature on LCD
+8️⃣ CAN Testing
+Test CAN hardware
+Verify CAN transmission
+Verify CAN reception
+Analyze CAN communication
+9️⃣ Node Development
+
+Develop:
+
+Main Node
+Indicator & Reverse Alert Node
+Fuel Node
+🔟 System Integration
+
+📊 System Flow
+Connect all three nodes through the CAN bus and test the complete system.
+
+                         📡 CAN BUS
+                             │
+          ┌──────────────────┼──────────────────┐
+          │                  │                  │
+          ▼                  ▼                  ▼
+   ┌──────────────┐  ┌──────────────────┐  ┌──────────────┐
+   │ 🖥️ MAIN NODE │  │ 🚦 INDICATOR &   │  │ ⛽ FUEL NODE │
+   │              │  │ REVERSE ALERT    │  │              │
+   │ LPC2129      │  │ NODE             │  │ LPC2129      │
+   │              │  │ LPC2129          │  │ + ADC        │
+   └──────┬───────┘  └────────┬─────────┘  └──────┬───────┘
+          │                   │                   │
+     ┌────┴─────┐       ┌─────┴──────┐       ┌────┴──────┐
+     │ 🖥️ LCD   │       │ 💡 LEDs    │       │ ⛽ Fuel    │
+     │ 🌡️ DS18B20│      │ 📏 HC-SR05 │       │ 📈 ADC     │
+     │ 🔘 Switch│       │ 🔊 Buzzer  │       │            │
+     └──────────┘       └────────────┘       └────────────┘
+
+🖥️ Centralized Dashboard
+
+The Main Node LCD displays:
+╔══════════════════════════════════╗
+║     🚗 VEHICLE MONITORING        ║
+╠══════════════════════════════════╣
+║ 🌡️ Engine Temp : XX °C           ║
+║ ⛽ Fuel Level  : XX %             ║
+║ 🚘 Mode        : FORWARD/REVERSE ║
+║ ⚠️ Alert       : SAFE/WARNING/STOP║
+╚══════════════════════════════════╝
+
+🖼️ Block Diagram
+<img width="800" height="544" alt="CAN Vehicle Monitoring System Block Diagram" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870">
+
+📂 Project Folder Structure
+CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
+│
+├── 📁 Main_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   ├── 📄 lcd.c
+│   ├── 📄 ds18b20.c
+│   └── 📄 ext_interrupt.c
+│
+├── 📁 Indicator_Reverse_Alert_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   ├── 📄 hc_sr05.c
+│   ├── 📄 buzzer.c
+│   └── 📄 indicator.c
+│
+├── 📁 Fuel_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   └── 📄 adc.c
+│
+├── 📁 Docs/
+│   └── 🖼️ block_diagram.png
+│
+└── 📄 README.md
+
+📸 Project Output
+🖥️ Dashboard Display
+<img width="576" height="1280" alt="Vehicle Monitoring Dashboard Output" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844">
+
+🏗️ Complete Setup
+<img width="1280" height="576" alt="Complete Project Setup" src="https://github.com/user-attachments/assets/cee4db71-c8f6-4ec6-b538-d4f70fa01f9e">
+
+🚘 Applications
+🚗 Automotive Embedded Systems
+📡 CAN-Based ECU Communication
+📊 Vehicle Monitoring
+🅿️ Reverse Parking Assistance
+🚦 Vehicle Indicator Control
+🔗 Distributed Embedded Systems
+🛡️ Driver Assistance Systems
+
+🎓 Learning Outcomes
+
+Through this project, the following concepts are covered:
+
+💻 Embedded-C Programming
+🧠 LPC2129 ARM7 Architecture
+🔌 GPIO Interfacing
+📈 ADC Interfacing
+⚡ External Interrupt Handling
+📡 CAN Protocol and CAN Communication
+🖥️ LCD Interfacing
+🌡️ Temperature Sensor Interfacing
+📏 Ultrasonic Obstacle Detection
+🔗 Multi-Node ECU Communication
+🏗️ Distributed Embedded-System Design
+
+👨‍💻 Project Information
+👤 Project By
+
+BHARGAV BASWANI
+
+🎓 Education
+
+B.Tech – Electronics and Communication Engineering
+
+🏢 Project
+
+Vector India Major Project
+
+🛠️ Domain
+
+Embedded Systems | CAN | LPC2129
+
+
