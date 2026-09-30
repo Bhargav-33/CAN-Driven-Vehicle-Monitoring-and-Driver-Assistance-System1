@@ -335,8 +335,7 @@ The Main Node LCD displays:
 ╚══════════════════════════════════╝
 
 🖼️ Block Diagram
-<img width="800" height="544" alt="CAN Vehicle Monitoring System Block Diagram" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870">
-
+Screenshot 2026-09-30 at 10.56.06.png
 📂 Project Folder Structure
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
