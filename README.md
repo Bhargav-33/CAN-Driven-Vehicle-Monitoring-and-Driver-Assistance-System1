@@ -388,7 +388,7 @@ The Main Node LCD displays:
 
 <p align="center">
   <img
-    src="https://raw.githubusercontent.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/main/Docs/block_diagram.png"
+    src="https://github.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/blob/main/Screenshot%202026-09-30%20at%2010.56.06.png"
     alt="CAN-Driven Vehicle Monitoring and Driver Assistance System Block Diagram"
     width="1000">
 </p>
