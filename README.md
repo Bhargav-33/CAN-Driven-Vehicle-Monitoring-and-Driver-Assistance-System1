@@ -335,7 +335,8 @@ The Main Node LCD displays:
 ╚══════════════════════════════════╝
 
 🖼️ Block Diagram
-https://github.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/blob/main/Screenshot%202026-09-30%20at%2010.56.06.png
+<img width="800" height="544" alt="Screenshot 2026-09-30 at 10 56 06" src="https://github.com/user-attachments/assets/1c49f908-cd30-467a-b28a-54d2f56fd6cd" />
+
 📂 Project Folder Structure
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
