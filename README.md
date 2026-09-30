@@ -335,7 +335,18 @@ The Main Node LCD displays:
 ╚══════════════════════════════════╝
 
 🖼️ Block Diagram
-Docs/block_diagram.png
+
+<p align="center">
+  <img
+    src="./Docs/block_diagram.png"
+    alt="CAN-Driven Vehicle Monitoring and Driver Assistance System Block Diagram"
+    width="900"
+  >
+</p>
+
+<p align="center">
+  <b>Three-Node CAN-Based Vehicle Monitoring and Driver Assistance System</b>
+</p>
 📂 Project Folder Structure
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
@@ -365,7 +376,7 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 
 📸 Project Output
 🖥️ Dashboard Display
-<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/f0f7cadb-76fc-4687-8ffb-7f88d5f8a134" />
+
 
 🏗️ Complete Setup
 https://github.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/blob/main/de71b374-463b-4d11-9cbe-2325f0506073.jpg?raw=true
