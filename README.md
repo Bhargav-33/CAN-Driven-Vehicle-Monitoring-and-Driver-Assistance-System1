@@ -387,6 +387,9 @@ Connect all three nodes through the CAN bus and verify the complete vehicle moni
 
 📊 System Flow
 
+
+
+
                          CAN BUS
                             │
         ┌───────────────────┼───────────────────┐
@@ -408,6 +411,9 @@ Connect all three nodes through the CAN bus and verify the complete vehicle moni
 
 🖥️ Centralized Dashboard
 
+
+
+
 The Main Node LCD displays the real-time vehicle status:
 
 Engine Temperature : XX °C
@@ -424,6 +430,9 @@ Reverse Alert      : SAFE / WARNING / STOP
 
 
 📂 Suggested Project Folder Structure
+
+
+
 
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
