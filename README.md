@@ -417,7 +417,7 @@ B.Tech – Electronics and Communication Engineering
 
 🏢 Project
 
-Vector India Major Project
+Vector India 
 
 🛠️ Domain
 
