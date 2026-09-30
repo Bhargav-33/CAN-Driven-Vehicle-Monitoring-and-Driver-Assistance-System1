@@ -366,10 +366,10 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 
 📸 Project Output
 🖥️ Dashboard Display
-<img width="576" height="1280" alt="Vehicle Monitoring Dashboard Output" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844">
+<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/f0f7cadb-76fc-4687-8ffb-7f88d5f8a134" />
 
 🏗️ Complete Setup
-<img width="1280" height="576" alt="Complete Project Setup" src="https://github.com/user-attachments/assets/cee4db71-c8f6-4ec6-b538-d4f70fa01f9e">
+<img width="1280" height="576" alt="image" src="https://github.com/user-attachments/assets/674fb2c1-9f9b-454b-a96f-e6acb1c74e4c" />
 
 🚘 Applications
 🚗 Automotive Embedded Systems
