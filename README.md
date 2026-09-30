@@ -368,7 +368,7 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/f0f7cadb-76fc-4687-8ffb-7f88d5f8a134" />
 
 🏗️ Complete Setup
-<img width="1280" height="576" alt="image" src="https://github.com/user-attachments/assets/674fb2c1-9f9b-454b-a96f-e6acb1c74e4c" />
+https://github.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/blob/main/de71b374-463b-4d11-9cbe-2325f0506073.jpg?raw=true
 
 🚘 Applications
 🚗 Automotive Embedded Systems
