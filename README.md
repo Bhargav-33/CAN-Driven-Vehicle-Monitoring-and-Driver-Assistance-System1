@@ -415,6 +415,10 @@ Fuel Percentage    : XX %
 Vehicle Mode       : FORWARD / REVERSE
 Reverse Alert      : SAFE / WARNING / STOP
 
+#Block Diagram
+
+
+
 📂 Suggested Project Folder Structure
 
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
@@ -442,6 +446,7 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │   └── block_diagram.png
 │
 └── README.md
+#
 
 🚘 Applications
 
