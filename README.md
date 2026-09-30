@@ -421,6 +421,8 @@ Reverse Alert      : SAFE / WARNING / STOP
 
 
 
+
+
 📂 Suggested Project Folder Structure
 
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
@@ -448,7 +450,10 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │   └── block_diagram.png
 │
 └── README.md
-#
+
+# Project output
+
+<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844" />
 
 🚘 Applications
 
