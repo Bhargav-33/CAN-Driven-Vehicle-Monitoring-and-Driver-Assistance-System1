@@ -1,4 +1,4 @@
-<img width="800" height="544" alt="Screenshot 2026-09-30 at 10 56 06" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870" /># CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1
+# CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1
 CAN-Driven Vehicle Monitoring and Driver Assistance System
 
 📖 Overview
@@ -417,7 +417,7 @@ Reverse Alert      : SAFE / WARNING / STOP
 
 #Block Diagram
 
-![Uploading Screenshot 2026-09-30 at 10.56.06.png…]()
+<img width="800" height="544" alt="Screenshot 2026-09-30 at 10 56 06" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870" />
 
 
 
