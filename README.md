@@ -455,6 +455,10 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 
 <img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844" />
 
+ # Complete Setup
+ <img width="1280" height="576" alt="image" src="https://github.com/user-attachments/assets/cee4db71-c8f6-4ec6-b538-d4f70fa01f9e" />
+
+
 🚘 Applications
 
 Automotive Embedded Systems
