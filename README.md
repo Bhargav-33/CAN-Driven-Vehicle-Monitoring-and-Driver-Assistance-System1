@@ -13,7 +13,7 @@
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
 The **CAN-Driven Vehicle Monitoring and Driver Assistance System** is a three-node embedded system developed using the **LPC2129 ARM7 microcontroller** and **Controller Area Network (CAN)** protocol.
 
@@ -167,39 +167,49 @@ Fuel Percentage
 CAN Transmission
      ↓
 Main Node
+```
 
 The Fuel Percentage is periodically transmitted to the Main Node.
 
 When there is a significant change in fuel percentage, the updated value is transmitted immediately.
 
-📡 CAN Communication
-🖥️ Main Node → 🚦 Indicator & Reverse Alert Node
+---
+
+# 📡 CAN Communication
+
+## 🖥️ Main Node → 🚦 Indicator & Reverse Alert Node
 
 The Main Node sends:
 
-🔄 Vehicle Mode
-⬅️ Left Indicator command
-➡️ Right Indicator command
-⏹️ Indicator OFF command
-🚦 Indicator & Reverse Alert Node → 🖥️ Main Node
+- 🔄 Vehicle Mode
+- ⬅️ Left Indicator command
+- ➡️ Right Indicator command
+- ⏹️ Indicator OFF command
+
+## 🚦 Indicator & Reverse Alert Node → 🖥️ Main Node
 
 The node sends:
 
-🟢 SAFE
-🟡 WARNING
-🔴 STOP
-⛽ Fuel Node → 🖥️ Main Node
+- 🟢 SAFE
+- 🟡 WARNING
+- 🔴 STOP
+
+## ⛽ Fuel Node → 🖥️ Main Node
 
 The Fuel Node sends:
 
-⛽ Fuel Percentage
+- ⛽ Fuel Percentage
 
-🔄 CAN Communication Flow
+---
+
+# 🔄 CAN Communication Flow
+
+```text
                     📡 CAN BUS
                         │
                         │
               ┌─────────▼─────────┐
-              │   🖥️ MAIN NODE     │
+              │   🖥️ MAIN NODE    │
               │      LPC2129      │
               │                   │
               │  LCD + DS18B20    │
@@ -210,100 +220,132 @@ The Fuel Node sends:
               │                   │
               ▼                   ▼
  ┌──────────────────────┐   ┌──────────────────┐
- │ 🚦 INDICATOR &       │   │ ⛽ FUEL NODE      │
+ │ 🚦 INDICATOR &       │   │ ⛽ FUEL NODE     │
  │ REVERSE ALERT NODE   │   │                  │
  │                      │   │ LPC2129 + ADC    │
  │ LPC2129 + MCP2551    │   │ Fuel Gauge       │
  │ LEDs + HC-SR05       │   │                  │
  │ Buzzer               │   │                  │
  └──────────────────────┘   └──────────────────┘
+```
 
-🧩 Hardware Requirements
-| 🔧 Hardware     | Purpose                  |
-| --------------- | ------------------------ |
-| 🧠 LPC2129 ARM7 | Microcontroller          |
-| 📡 MCP2551      | CAN Transceiver          |
-| 💡 LEDs         | Indicator / alert        |
-| 🖥️ LCD         | Dashboard display        |
-| 📏 HC-SR05      | Obstacle detection       |
-| ⛽ Fuel Gauge    | Fuel measurement         |
-| 🔘 Switches     | Mode / indicator control |
-| 🔌 USB-to-UART  | Serial communication     |
-| 🌡️ DS18B20     | Temperature sensing      |
-| 🔊 Buzzer       | Reverse alert            |
+---
 
-💻 Software Requirements
-💻 Embedded C Programming
-🛠️ Keil-C Compiler
-⚡ Flash Magic
+# 🧩 Hardware Requirements
 
-🔧 Technologies Used
-Embedded C
-LPC2129 ARM7
-CAN Protocol
-MCP2551
-GPIO
-ADC
-External Interrupts
-LCD Interfacing
-DS18B20
-HC-SR05
-Fuel Gauge
-UART
-ECU Communication
+| 🔧 Hardware | Purpose |
+|---|---|
+| 🧠 LPC2129 ARM7 | Microcontroller |
+| 📡 MCP2551 | CAN Transceiver |
+| 💡 LEDs | Indicator / alert |
+| 🖥️ LCD | Dashboard display |
+| 📏 HC-SR05 | Obstacle detection |
+| ⛽ Fuel Gauge | Fuel measurement |
+| 🔘 Switches | Mode / indicator control |
+| 🔌 USB-to-UART | Serial communication |
+| 🌡️ DS18B20 | Temperature sensing |
+| 🔊 Buzzer | Reverse alert |
 
-🔄 Implementation Sequence
-1️⃣ Project Setup
+---
+
+# 💻 Software Requirements
+
+- 💻 Embedded C Programming
+- 🛠️ Keil-C Compiler
+- ⚡ Flash Magic
+
+---
+
+# 🔧 Technologies Used
+
+- 💻 Embedded C
+- 🧠 LPC2129 ARM7
+- 📡 CAN Protocol
+- 📡 MCP2551
+- 🔌 GPIO
+- 📈 ADC
+- ⚡ External Interrupts
+- 🖥️ LCD Interfacing
+- 🌡️ DS18B20
+- 📏 HC-SR05
+- ⛽ Fuel Gauge
+- 🔌 UART
+- 🔗 ECU Communication
+
+---
+
+# 🔄 Implementation Sequence
+
+## 1️⃣ Project Setup
 
 Create separate folders for:
 
-🖥️ Main Node
-🚦 Indicator & Reverse Alert Node
-⛽ Fuel Node
-2️⃣ LCD Testing
+- 🖥️ Main Node
+- 🚦 Indicator & Reverse Alert Node
+- ⛽ Fuel Node
+
+## 2️⃣ LCD Testing
 
 Verify:
 
-Character display
-String display
-Integer display
-3️⃣ ADC Testing
-Connect variable voltage using potentiometer
-Read ADC value
-Display ADC value on LCD
-4️⃣ Fuel Percentage
-Develop fuel percentage calculation
-Display fuel percentage on LCD
-5️⃣ External Interrupt Testing
-Test external interrupts
-Count interrupt occurrences
-Display interrupt count
-6️⃣ HC-SR05 Testing
-Generate trigger pulse
-Measure echo duration
-Calculate obstacle distance
-Display distance on LCD
-7️⃣ Temperature Sensor Testing
-Interface DS18B20
-Read engine temperature
-Display temperature on LCD
-8️⃣ CAN Testing
-Test CAN hardware
-Verify CAN transmission
-Verify CAN reception
-Analyze CAN communication
-9️⃣ Node Development
+- Character display
+- String display
+- Integer display
+
+## 3️⃣ ADC Testing
+
+- Connect variable voltage using potentiometer
+- Read ADC value
+- Display ADC value on LCD
+
+## 4️⃣ Fuel Percentage
+
+- Develop fuel percentage calculation
+- Display fuel percentage on LCD
+
+## 5️⃣ External Interrupt Testing
+
+- Test external interrupts
+- Count interrupt occurrences
+- Display interrupt count
+
+## 6️⃣ HC-SR05 Testing
+
+- Generate trigger pulse
+- Measure echo duration
+- Calculate obstacle distance
+- Display distance on LCD
+
+## 7️⃣ Temperature Sensor Testing
+
+- Interface DS18B20
+- Read engine temperature
+- Display temperature on LCD
+
+## 8️⃣ CAN Testing
+
+- Test CAN hardware
+- Verify CAN transmission
+- Verify CAN reception
+- Analyze CAN communication
+
+## 9️⃣ Node Development
 
 Develop:
 
-Main Node
-Indicator & Reverse Alert Node
-Fuel Node
-🔟 System Integration
+- 🖥️ Main Node
+- 🚦 Indicator & Reverse Alert Node
+- ⛽ Fuel Node
 
-📊 System Flow
+## 🔟 System Integration
+
 Connect all three nodes through the CAN bus and test the complete system.
 
+---
+
+# 📊 System Flow
+
+```text
                          📡 CAN BUS
                              │
           ┌──────────────────┼──────────────────┐
@@ -321,10 +363,15 @@ Connect all three nodes through the CAN bus and test the complete system.
      │ 🌡️ DS18B20│      │ 📏 HC-SR05 │       │ 📈 ADC     │
      │ 🔘 Switch│       │ 🔊 Buzzer  │       │            │
      └──────────┘       └────────────┘       └────────────┘
+```
 
-🖥️ Centralized Dashboard
+---
+
+# 🖥️ Centralized Dashboard
 
 The Main Node LCD displays:
+
+```text
 ╔══════════════════════════════════╗
 ║     🚗 VEHICLE MONITORING        ║
 ╠══════════════════════════════════╣
@@ -333,21 +380,28 @@ The Main Node LCD displays:
 ║ 🚘 Mode        : FORWARD/REVERSE ║
 ║ ⚠️ Alert       : SAFE/WARNING/STOP║
 ╚══════════════════════════════════╝
+```
 
-🖼️ Block Diagram
+---
+
+# 🖼️ Actual Hardware Block Diagram
 
 <p align="center">
   <img
-    src="./Docs/block_diagram.png"
+    src="https://raw.githubusercontent.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/main/Docs/block_diagram.png"
     alt="CAN-Driven Vehicle Monitoring and Driver Assistance System Block Diagram"
-    width="900"
-  >
+    width="1000">
 </p>
 
 <p align="center">
   <b>Three-Node CAN-Based Vehicle Monitoring and Driver Assistance System</b>
 </p>
-📂 Project Folder Structure
+
+---
+
+# 📂 Project Folder Structure
+
+```text
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
 ├── 📁 Main_Node/
@@ -370,57 +424,141 @@ CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │   └── 📄 adc.c
 │
 ├── 📁 Docs/
-│   └── 🖼️ block_diagram.png
+│   ├── 🖼️ block_diagram.png
+│   ├── 🖼️ dashboard_output.jpg
+│   └── 🖼️ complete_setup.jpg
 │
 └── 📄 README.md
+```
 
-📸 Project Output
-🖥️ Dashboard Display
+---
 
+# 📸 Project Output
 
-🏗️ Complete Setup
-https://github.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/blob/main/de71b374-463b-4d11-9cbe-2325f0506073.jpg?raw=true
+## 🖥️ Dashboard Display
 
-🚘 Applications
-🚗 Automotive Embedded Systems
-📡 CAN-Based ECU Communication
-📊 Vehicle Monitoring
-🅿️ Reverse Parking Assistance
-🚦 Vehicle Indicator Control
-🔗 Distributed Embedded Systems
-🛡️ Driver Assistance Systems
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/main/Docs/dashboard_output.jpg"
+    alt="Vehicle Monitoring Dashboard"
+    width="600">
+</p>
 
-🎓 Learning Outcomes
+---
+
+## 🏗️ Complete Setup
+
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/Bhargav-33/CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1/main/Docs/complete_setup.jpg"
+    alt="Complete CAN Vehicle Monitoring System Setup"
+    width="1000">
+</p>
+
+---
+
+# 🚘 Applications
+
+- 🚗 Automotive Embedded Systems
+- 📡 CAN-Based ECU Communication
+- 📊 Vehicle Monitoring
+- 🅿️ Reverse Parking Assistance
+- 🚦 Vehicle Indicator Control
+- 🔗 Distributed Embedded Systems
+- 🛡️ Driver Assistance Systems
+
+---
+
+# 🎓 Learning Outcomes
 
 Through this project, the following concepts are covered:
 
-💻 Embedded-C Programming
-🧠 LPC2129 ARM7 Architecture
-🔌 GPIO Interfacing
-📈 ADC Interfacing
-⚡ External Interrupt Handling
-📡 CAN Protocol and CAN Communication
-🖥️ LCD Interfacing
-🌡️ Temperature Sensor Interfacing
-📏 Ultrasonic Obstacle Detection
-🔗 Multi-Node ECU Communication
-🏗️ Distributed Embedded-System Design
+- 💻 Embedded-C Programming
+- 🧠 LPC2129 ARM7 Architecture
+- 🔌 GPIO Interfacing
+- 📈 ADC Interfacing
+- ⚡ External Interrupt Handling
+- 📡 CAN Protocol and CAN Communication
+- 🖥️ LCD Interfacing
+- 🌡️ Temperature Sensor Interfacing
+- 📏 Ultrasonic Obstacle Detection
+- 🔗 Multi-Node ECU Communication
+- 🏗️ Distributed Embedded-System Design
 
-👨‍💻 Project Information
-👤 Project By
+---
 
-BHARGAV BASWANI
+# 👨‍💻 Project Information
 
-🎓 Education
+### 👤 Project By
 
-B.Tech – Electronics and Communication Engineering
+**BHARGAV BASWANI**
 
-🏢 Project
+### 🎓 Education
 
-Vector India  
+**B.Tech – Electronics and Communication Engineering**
 
-🛠️ Domain
+### 🏢 Project
 
-Embedded Systems | CAN | LPC2129
+**Vector India Major Project**
 
+### 🛠️ Domain
 
+**Embedded Systems | CAN | LPC2129**
+
+---
+
+# ⭐ Project Highlights
+
+> 🚗 **Automotive Embedded System**  
+>
+> 📡 **Three-Node CAN Network**  
+>
+> 🧠 **LPC2129 ARM7**  
+>
+> 🌡️ **Temperature Monitoring**  
+>
+> ⛽ **Fuel Monitoring**  
+>
+> 📏 **Reverse Obstacle Detection**  
+>
+> 🚦 **Indicator Control**  
+>
+> 🔊 **Driver Alert System**  
+>
+> 🖥️ **Real-Time LCD Dashboard**
+
+---
+
+# 📌 Keywords
+
+`Embedded C`
+`LPC2129`
+`ARM7`
+`CAN`
+`MCP2551`
+`ECU`
+`Automotive`
+`DS18B20`
+`HC-SR05`
+`ADC`
+`GPIO`
+`External Interrupt`
+`LCD`
+`UART`
+`Vehicle Monitoring`
+`Driver Assistance`
+
+---
+
+<p align="center">
+
+## 🚗 CAN-Driven Vehicle Monitoring and Driver Assistance System
+
+**BHARGAV BASWANI**
+
+💻 Embedded C &nbsp; | &nbsp;
+🧠 LPC2129 ARM7 &nbsp; | &nbsp;
+📡 CAN &nbsp; | &nbsp;
+🚘 Automotive Embedded Systems
+
+</p>
