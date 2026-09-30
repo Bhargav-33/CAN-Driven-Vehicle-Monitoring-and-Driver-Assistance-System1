@@ -1,19 +1,33 @@
 # CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System1
-CAN-Driven Vehicle Monitoring and Driver Assistance System
+
+🚗 CAN-Driven Vehicle Monitoring and Driver Assistance System
+
+Three-Node CAN-Based Automotive Embedded System
+LPC2129 ARM7 • Embedded C • CAN • MCP2551 • Vector India Major Project
 
 📖 Overview
 
 The CAN-Driven Vehicle Monitoring and Driver Assistance System is a three-node embedded system developed using the LPC2129 ARM7 microcontroller and the Controller Area Network (CAN) protocol.
 
-The system is designed to monitor important vehicle parameters and provide driver assistance functions through distributed CAN nodes. It monitors fuel level and engine temperature, controls left/right indicators, detects reverse obstacles, and displays the vehicle status on a centralized LCD dashboard.
+The system is designed to monitor important vehicle parameters and provide driver-assistance functions through distributed CAN nodes. It monitors fuel level and engine temperature, controls left/right indicators, detects reverse obstacles, and displays vehicle status on a centralized LCD dashboard.
 
-The system consists of:
+🔹 System Nodes
 
-Main Node
+Node
 
-Indicator & Reverse Alert Node
+Main Function
 
-Fuel Node
+🖥️ Main Node
+
+Central controller, LCD display, temperature monitoring and switch handling
+
+🚦 Indicator & Reverse Alert Node
+
+Indicator control and reverse obstacle detection
+
+⛽ Fuel Node
+
+Fuel-level measurement and CAN transmission
 
 The three nodes communicate through a CAN bus using MCP2551 CAN transceivers.
 
@@ -21,119 +35,120 @@ The three nodes communicate through a CAN bus using MCP2551 CAN transceivers.
 
 To design and implement a three-node CAN-based vehicle monitoring and driver assistance system capable of:
 
-Monitoring fuel level
+⛽ Monitoring fuel level
 
-Monitoring engine temperature
+🌡️ Monitoring engine temperature
 
-Detecting obstacles during reverse operation
+🚧 Detecting obstacles during reverse operation
 
-Controlling left and right indicators
+🚦 Controlling left and right indicators
 
-Providing SAFE, WARNING, and STOP reverse-alert status
+🔊 Providing SAFE, WARNING, and STOP reverse-alert status
 
-Displaying real-time vehicle information on a centralized LCD
+🖥️ Displaying real-time vehicle information on a centralized LCD
 
 ✨ Key Features
 
-✅ Three-node CAN communication
+🔗 Three-node CAN communication
 
-✅ LPC2129 ARM7-based embedded system
+🧠 LPC2129 ARM7-based embedded system
 
-✅ Engine temperature monitoring using DS18B20
+🌡️ Engine temperature monitoring using DS18B20
 
-✅ Fuel percentage measurement using on-chip ADC
+⛽ Fuel percentage measurement using on-chip ADC
 
-✅ Fuel information transmitted through CAN
+📡 Fuel information transmitted through CAN
 
-✅ Forward and Reverse mode selection
+🔄 Forward and Reverse mode selection
 
-✅ Left and Right indicator control through CAN
+🚦 Left and Right indicator control through CAN
 
-✅ Reverse obstacle detection using HC-SR05 ultrasonic sensor
+📏 Reverse obstacle detection using HC-SR05 ultrasonic sensor
 
-✅ Buzzer-based reverse warning
+🔊 Buzzer-based reverse warning
 
-✅ SAFE / WARNING / STOP status generation
+⚠️ SAFE / WARNING / STOP status generation
 
-✅ Centralized LCD dashboard
+🖥️ Centralized LCD dashboard
 
-✅ External interrupt-based switch handling
+⚡ External interrupt-based switch handling
 
 🏗️ System Architecture
 
-1. Main Node
+1️⃣ 🖥️ Main Node
 
 The Main Node acts as the central controller of the complete vehicle monitoring and driver assistance system.
 
-Its responsibilities are:
+🔹 Responsibilities
 
-Continuously reads engine temperature from the DS18B20 sensor.
+🌡️ Continuously reads engine temperature from the DS18B20 sensor
 
-Displays engine temperature on the LCD.
+🖥️ Displays engine temperature on the LCD
 
-Receives fuel percentage from the Fuel Node through CAN.
+⛽ Receives fuel percentage from the Fuel Node through CAN
 
-Displays the received fuel percentage on the LCD.
+📊 Displays the received fuel percentage on the LCD
 
-Monitors the Mode Selection Switch using an external interrupt.
+⚡ Monitors the Mode Selection Switch using an external interrupt
 
-Selects either Forward Mode or Reverse Mode.
+🔄 Selects either Forward Mode or Reverse Mode
 
-Forward Mode
+🚘 Forward Mode
 
 When Forward Mode is selected:
 
-The Main Node monitors the Left Indicator Switch (SW1) and Right Indicator Switch (SW2) using external interrupts.
+Monitors the Left Indicator Switch (SW1) using an external interrupt
 
-When the Left Indicator Switch is pressed, a Left Indicator command is sent to the Indicator & Reverse Alert Node through CAN.
+Monitors the Right Indicator Switch (SW2) using an external interrupt
 
-When the Right Indicator Switch is pressed, a Right Indicator command is sent through CAN.
+Sends the Left Indicator command to the Indicator & Reverse Alert Node through CAN
 
-Reverse Mode
+Sends the Right Indicator command to the Indicator & Reverse Alert Node through CAN
+
+🔙 Reverse Mode
 
 When Reverse Mode is selected:
 
-The Main Node receives the Reverse Alert Status from the Indicator & Reverse Alert Node through CAN.
+Receives the Reverse Alert Status from the Indicator & Reverse Alert Node through CAN
 
-Based on the received status, the LCD displays:
+Displays one of the following statuses on the LCD:
 
-SAFE
+🟢 SAFE
 
-WARNING
+🟡 WARNING
 
-STOP
+🔴 STOP
 
-The LCD continuously displays:
+🖥️ LCD Dashboard Displays
 
-Engine Temperature
+┌──────────────────────────────────┐
+│ Engine Temperature : XX °C       │
+│ Fuel Percentage    : XX %        │
+│ Vehicle Mode       : FORWARD     │
+│ Reverse Alert      : SAFE        │
+└──────────────────────────────────┘
 
-Fuel Percentage
+2️⃣ 🚦 Indicator & Reverse Alert Node
 
-Vehicle Mode
+This node performs two major functions:
 
-Reverse Alert Status
+🚦 Vehicle indicator control
 
-🚦 2. Indicator & Reverse Alert Node
+🚧 Reverse obstacle detection
 
-This node performs two functions:
-
-Vehicle indicator control
-
-Reverse obstacle detection
-
-Forward Mode Operation
+🚘 Forward Mode Operation
 
 When Forward Mode is received:
 
-Reverse obstacle detection remains disabled.
+Reverse obstacle detection remains disabled
 
-A Left Indicator command causes the left indicator LEDs to blink.
+⬅️ Left Indicator command → Left indicator LEDs blink
 
-A Right Indicator command causes the right indicator LEDs to blink.
+➡️ Right Indicator command → Right indicator LEDs blink
 
-An Indicator OFF command switches OFF all indicator LEDs.
+⏹️ Indicator OFF command → All indicator LEDs switch OFF
 
-Reverse Mode Operation
+🔙 Reverse Mode Operation
 
 When Reverse Mode is received:
 
@@ -141,27 +156,27 @@ Normal indicator operation is disabled.
 
 The HC-SR05 ultrasonic sensor is enabled.
 
-The node continuously measures the distance between the vehicle and an obstacle.
+The node continuously measures the distance between the vehicle and obstacle.
 
 The measured distance is compared with predefined:
 
-Safe range
+🟢 Safe range
 
-Warning range
+🟡 Warning range
 
-Critical range
+🔴 Critical range
 
-Reverse Alert Logic
+⚠️ Reverse Alert Logic
 
-Obstacle Condition
+🚧 Obstacle Condition
 
-Buzzer
+🔊 Buzzer
 
-LED
+💡 LED
 
-CAN Status
+📡 CAN Status
 
-Safe distance
+🟢 Safe distance
 
 OFF
 
@@ -169,7 +184,7 @@ OFF
 
 SAFE
 
-Warning range
+🟡 Warning range
 
 Intermittent
 
@@ -177,7 +192,7 @@ Intermittent
 
 WARNING
 
-Critical range
+🔴 Critical range
 
 Continuous
 
@@ -189,129 +204,169 @@ The corresponding status is transmitted to the Main Node through CAN.
 
 When Forward Mode is selected again, the node returns to indicator-control operation.
 
-⛽ 3. Fuel Node
+3️⃣ ⛽ Fuel Node
 
 The Fuel Node is responsible for monitoring the fuel level.
 
-Operation:
+🔄 Operation
 
-The fuel gauge provides an analog input.
+⛽ The fuel gauge provides an analog input.
 
-The LPC2129 on-chip ADC reads the input.
+📥 The LPC2129 on-chip ADC reads the input.
 
-The ADC value is converted into Fuel Percentage.
+🧮 The ADC value is converted into Fuel Percentage.
 
-The Fuel Percentage is periodically transmitted to the Main Node through CAN.
+📡 The Fuel Percentage is periodically transmitted to the Main Node through CAN.
 
-When there is a significant change in fuel percentage, the updated value is transmitted immediately.
+⚡ When there is a significant change in fuel percentage, the updated value is transmitted immediately.
 
 🔄 CAN Communication
 
 The system uses CAN communication to exchange information between the three nodes.
 
-Main Node → Indicator & Reverse Alert Node
+🖥️ Main Node ➡️ 🚦 Indicator & Reverse Alert Node
 
 The Main Node sends:
 
-Vehicle Mode
+🔄 Vehicle Mode
 
-Left Indicator command
+⬅️ Left Indicator command
 
-Right Indicator command
+➡️ Right Indicator command
 
-Indicator OFF command
+⏹️ Indicator OFF command
 
-Indicator & Reverse Alert Node → Main Node
+🚦 Indicator & Reverse Alert Node ➡️ 🖥️ Main Node
 
 The node sends:
 
-SAFE status
+🟢 SAFE status
 
-WARNING status
+🟡 WARNING status
 
-STOP status
+🔴 STOP status
 
-Fuel Node → Main Node
+⛽ Fuel Node ➡️ 🖥️ Main Node
 
 The Fuel Node sends:
 
-Fuel Percentage
+⛽ Fuel Percentage
 
-This distributed architecture allows each node to perform a dedicated function while the Main Node provides centralized monitoring.
+📡 Communication Flow
+
+                  ┌──────────────────────┐
+                  │      🖥️ MAIN NODE     │
+                  │      LPC2129         │
+                  └──────────┬───────────┘
+                             │
+                     ↕ CAN Communication
+                             │
+             ┌───────────────┴───────────────┐
+             │                               │
+             ▼                               ▼
+┌──────────────────────────┐     ┌──────────────────────┐
+│ 🚦 INDICATOR &           │     │ ⛽ FUEL NODE          │
+│    REVERSE ALERT NODE    │     │ LPC2129 + ADC        │
+│ LPC2129 + MCP2551        │     │                      │
+└──────────────────────────┘     └──────────────────────┘
 
 🧩 Hardware Requirements
 
-LPC2129 ARM7 Microcontroller
+🔧 Component
 
-CAN Transceiver – MCP2551
+Purpose
 
-LEDs
+🧠 LPC2129 ARM7
 
-LCD
+Main microcontroller
 
-HC-SR05 Ultrasonic Sensor
+📡 MCP2551 CAN Transceiver
 
-Fuel Gauge
+CAN bus interface
 
-Switches
+💡 LEDs
 
-USB-to-UART Converter
+Indicator and reverse-alert indication
 
-DS18B20 Temperature Sensor
+🖥️ LCD
 
-Buzzer
+Vehicle status display
+
+📏 HC-SR05
+
+Reverse obstacle detection
+
+⛽ Fuel Gauge
+
+Fuel-level input
+
+🔘 Switches
+
+Mode and indicator control
+
+🔌 USB-to-UART Converter
+
+Serial communication/debugging
+
+🌡️ DS18B20
+
+Engine temperature sensing
+
+🔊 Buzzer
+
+Reverse warning alert
 
 💻 Software Requirements
 
-Embedded C Programming
+📝 Embedded C Programming
 
-Keil-C Compiler
+🛠️ Keil-C Compiler
 
-Flash Magic
+⚡ Flash Magic
 
-🔧 Technologies / Concepts Used
+🔧 Technologies & Concepts Used
 
-Embedded C
+💻 Embedded C
 
-LPC2129 ARM7 Architecture
+🧠 LPC2129 ARM7 Architecture
 
-General Purpose I/O
+🔌 General Purpose I/O
 
-On-chip ADC
+📈 On-chip ADC
 
-CAN Interface
+📡 CAN Interface
 
-CAN Protocol
+🔄 CAN Protocol
 
-External Interrupts
+⚡ External Interrupts
 
-LCD Interfacing
+🖥️ LCD Interfacing
 
-DS18B20 Temperature Sensor
+🌡️ DS18B20 Temperature Sensor
 
-HC-SR05 Ultrasonic Sensor
+📏 HC-SR05 Ultrasonic Sensor
 
-Fuel Gauge Interfacing
+⛽ Fuel Gauge Interfacing
 
-GPIO / LED Control
+💡 GPIO / LED Control
 
-UART / USB-to-UART for development and debugging
+🔌 UART / USB-to-UART for development and debugging
 
 🔄 Implementation Sequence
 
 The project is implemented and tested module-by-module before complete system integration.
 
-Step 1 – Project Setup
+1️⃣ Project Setup
 
 Create the project folder and separate folders for:
 
-Main Node
+🖥️ Main Node
 
-Indicator & Reverse Alert Node
+🚦 Indicator & Reverse Alert Node
 
-Fuel Node
+⛽ Fuel Node
 
-Step 2 – LCD Testing
+2️⃣ LCD Testing
 
 Verify LCD interfacing by displaying:
 
@@ -321,7 +376,7 @@ String constants
 
 Integer constants
 
-Step 3 – ADC Testing
+3️⃣ ADC Testing
 
 Connect variable voltage through a potentiometer.
 
@@ -329,13 +384,13 @@ Read the input using the LPC2129 on-chip ADC.
 
 Display the ADC value on the LCD.
 
-Step 4 – Fuel Percentage
+4️⃣ Fuel Percentage
 
 Develop the fuel percentage calculation.
 
 Display the calculated fuel percentage on the LCD.
 
-Step 5 – External Interrupt Testing
+5️⃣ External Interrupt Testing
 
 Test external interrupt functionality.
 
@@ -343,7 +398,7 @@ Count interrupt occurrences.
 
 Display the interrupt count on the LCD.
 
-Step 6 – HC-SR05 Testing
+6️⃣ HC-SR05 Testing
 
 Generate the ultrasonic trigger pulse.
 
@@ -355,7 +410,7 @@ Display the measured distance on the LCD.
 
 Verify the measurement for different obstacle positions.
 
-Step 7 – Temperature Sensor Testing
+7️⃣ Temperature Sensor Testing
 
 Interface the DS18B20 temperature sensor.
 
@@ -363,7 +418,7 @@ Read engine temperature.
 
 Display engine temperature on the LCD.
 
-Step 8 – CAN Testing
+8️⃣ CAN Testing
 
 Test the basic CAN code on hardware.
 
@@ -371,150 +426,167 @@ Analyze CAN transmission and reception.
 
 Verify communication between nodes.
 
-Step 9 – Node Development
+9️⃣ Node Development
 
 Develop the final software for:
 
-Main Node
+🖥️ Main Node
 
-Indicator & Reverse Alert Node
+🚦 Indicator & Reverse Alert Node
 
-Fuel Node
+⛽ Fuel Node
 
-Step 10 – System Integration
+🔟 System Integration
 
 Connect all three nodes through the CAN bus and verify the complete vehicle monitoring and driver assistance system.
 
 📊 System Flow
 
-
-
-
-                         CAN BUS
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-        ▼                   ▼                   ▼
- ┌─────────────┐   ┌──────────────────┐   ┌─────────────┐
- │  MAIN NODE  │   │ INDICATOR &      │   │  FUEL NODE  │
- │             │   │ REVERSE ALERT    │   │             │
- │ LPC2129     │   │ NODE             │   │ LPC2129     │
- │             │   │ LPC2129          │   │ + ADC       │
- └──────┬──────┘   └────────┬─────────┘   └──────┬──────┘
-        │                   │                    │
-        │                   │                    │
-   ┌────┴─────┐       ┌─────┴──────┐        ┌───┴───────┐
-   │ LCD      │       │ LEDs       │        │ Fuel Gauge│
-   │ DS18B20  │       │ HC-SR05    │        │           │
-   │ Switches │       │ Buzzer     │        │ ADC       │
-   └──────────┘       └────────────┘        └───────────┘
+                         📡 CAN BUS
+                             │
+          ┌──────────────────┼──────────────────┐
+          │                  │                  │
+          ▼                  ▼                  ▼
+   ┌──────────────┐  ┌──────────────────┐  ┌──────────────┐
+   │ 🖥️ MAIN NODE │  │ 🚦 INDICATOR &   │  │ ⛽ FUEL NODE │
+   │              │  │ REVERSE ALERT    │  │              │
+   │ LPC2129      │  │ NODE             │  │ LPC2129      │
+   │              │  │ LPC2129          │  │ + ADC        │
+   └──────┬───────┘  └────────┬─────────┘  └──────┬───────┘
+          │                   │                   │
+     ┌────┴─────┐       ┌─────┴──────┐       ┌────┴──────┐
+     │ 🖥️ LCD   │       │ 💡 LEDs    │       │ ⛽ Fuel    │
+     │ 🌡️ DS18B20│      │ 📏 HC-SR05 │       │ 📈 ADC     │
+     │ 🔘 Switch│       │ 🔊 Buzzer  │       │            │
+     └──────────┘       └────────────┘       └────────────┘
 
 🖥️ Centralized Dashboard
 
-
-
-
 The Main Node LCD displays the real-time vehicle status:
 
-Engine Temperature : XX °C
-Fuel Percentage    : XX %
-Vehicle Mode       : FORWARD / REVERSE
-Reverse Alert      : SAFE / WARNING / STOP
+╔══════════════════════════════════╗
+║  🚗 VEHICLE MONITORING SYSTEM    ║
+╠══════════════════════════════════╣
+║ 🌡️ Engine Temp : XX °C           ║
+║ ⛽ Fuel Level  : XX %             ║
+║ 🚘 Mode        : FORWARD/REVERSE ║
+║ ⚠️ Alert       : SAFE/WARNING/STOP║
+╚══════════════════════════════════╝
 
-#Block Diagram
+🖼️ Block Diagram
 
-<img width="800" height="544" alt="Screenshot 2026-09-30 at 10 56 06" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870" />
+<img width="800" height="544" alt="CAN Vehicle Monitoring System Block Diagram" src="https://github.com/user-attachments/assets/6fecfdc6-9760-45b8-810a-9d2933fc5870" />
 
-
-
-
-
-📂 Suggested Project Folder Structure
-
-
-
+📂 Project Folder Structure
 
 CAN-Driven-Vehicle-Monitoring-and-Driver-Assistance-System/
 │
-├── Main_Node/
-│   ├── main.c
-│   ├── can.c
-│   ├── lcd.c
-│   ├── ds18b20.c
-│   └── ext_interrupt.c
+├── 📁 Main_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   ├── 📄 lcd.c
+│   ├── 📄 ds18b20.c
+│   └── 📄 ext_interrupt.c
 │
-├── Indicator_Reverse_Alert_Node/
-│   ├── main.c
-│   ├── can.c
-│   ├── hc_sr05.c
-│   ├── buzzer.c
-│   └── indicator.c
+├── 📁 Indicator_Reverse_Alert_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   ├── 📄 hc_sr05.c
+│   ├── 📄 buzzer.c
+│   └── 📄 indicator.c
 │
-├── Fuel_Node/
-│   ├── main.c
-│   ├── can.c
-│   └── adc.c
+├── 📁 Fuel_Node/
+│   ├── 📄 main.c
+│   ├── 📄 can.c
+│   └── 📄 adc.c
 │
-├── Docs/
-│   └── block_diagram.png
+├── 📁 Docs/
+│   └── 🖼️ block_diagram.png
 │
-└── README.md
+└── 📄 README.md
 
-# Project output
+📸 Project Output
 
-<img width="576" height="1280" alt="image" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844" />
+🖥️ Dashboard Display
 
- # Complete Setup
- <img width="1280" height="576" alt="image" src="https://github.com/user-attachments/assets/cee4db71-c8f6-4ec6-b538-d4f70fa01f9e" />
+<img width="576" height="1280" alt="Vehicle Monitoring Dashboard Output" src="https://github.com/user-attachments/assets/838985a8-b1c9-4cbe-b897-a3b15152e844" />
 
+🏗️ Complete Setup
+
+<img width="1280" height="576" alt="Complete Project Setup" src="https://github.com/user-attachments/assets/cee4db71-c8f6-4ec6-b538-d4f70fa01f9e" />
 
 🚘 Applications
 
-Automotive Embedded Systems
+🚗 Automotive Embedded Systems
 
-CAN-Based ECU Communication
+📡 CAN-Based ECU Communication
 
-Vehicle Monitoring
+📊 Vehicle Monitoring
 
-Reverse Parking Assistance
+🅿️ Reverse Parking Assistance
 
-Vehicle Indicator Control
+🚦 Vehicle Indicator Control
 
-Distributed Embedded Systems
+🔗 Distributed Embedded Systems
 
-Driver Assistance Systems
+🛡️ Driver Assistance Systems
 
 🎓 Learning Outcomes
 
 Through this project, the following concepts are covered:
 
-Embedded-C programming
+💻 Embedded-C Programming
 
-LPC2129 ARM7 architecture
+🧠 LPC2129 ARM7 Architecture
 
-GPIO interfacing
+🔌 GPIO Interfacing
 
-ADC interfacing
+📈 ADC Interfacing
 
-External interrupt handling
+⚡ External Interrupt Handling
 
-CAN protocol and CAN communication
+📡 CAN Protocol and CAN Communication
 
-LCD interfacing
+🖥️ LCD Interfacing
 
-Temperature sensor interfacing
+🌡️ Temperature Sensor Interfacing
 
-Ultrasonic obstacle detection
+📏 Ultrasonic Obstacle Detection
 
-Multi-node ECU communication
+🔗 Multi-Node ECU Communication
 
-Distributed embedded-system design
+🏗️ Distributed Embedded-System Design
 
-👨‍💻 Project By
+👨‍💻 Project Information
+
+👤 Project By
+
 BHARGAV BASWANI
+
+🎓 Education
 
 B.Tech – Electronics and Communication Engineering
 
+🏢 Project
+
 Vector India Major Project
 
+🛠️ Domain
+
 Embedded Systems | CAN | LPC2129
+
+⭐ Project Highlights
+
+🚗 Automotive Embedded System
+📡 Three-Node CAN Network
+🧠 LPC2129 ARM7
+🌡️ Temperature Monitoring
+⛽ Fuel Monitoring
+📏 Reverse Obstacle Detection
+🚦 Indicator Control
+🔊 Driver Alert System
+🖥️ Real-Time LCD Dashboard
+
+📌 Keywords
+
+Embedded C LPC2129 ARM7 CAN MCP2551 ECU Automotive DS18B20 HC-SR05 ADC GPIO External Interrupt LCD UART Vehicle Monitoring Driver Assistance
